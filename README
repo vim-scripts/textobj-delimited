@@ -1,0 +1,56 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4977
+
+This textobject provides the keymappings to select a part of a delimited string. id, ad, iD, aD is used in default.
+
+# ... cursor
+------------------------------------------------
+ key input: did
+
+ '#foo_bar_baz'   ->   '_bar_baz'
+------------------------------------------------
+ key input: did
+
+ 'foo_#bar_baz'   ->   'foo__baz'
+------------------------------------------------
+ key input: did
+
+ 'foo_bar_#baz'   ->   'foo_bar_'
+------------------------------------------------
+ key input: d1id
+
+ '#foo_bar_baz'   ->   '_bar_baz'
+------------------------------------------------
+ key input: d2id
+
+ '#foo_bar_baz'   ->   'foo__baz'
+------------------------------------------------
+ key input: d3id
+
+ '#foo_bar_baz'   ->   'foo_bar_'
+------------------------------------------------
+ key input: dad
+ 
+ '#foo_bar_baz'   ->   'bar_baz'
+------------------------------------------------
+ key input: dad
+
+ 'foo_#bar_baz'   ->   'foo_baz'
+------------------------------------------------
+ key input: dad
+
+ 'foo_bar_#baz'   ->   'foo_bar'
+------------------------------------------------
+ key input: d1ad
+
+ '#foo_bar_baz'   ->   'bar_baz'
+------------------------------------------------
+ key input: d2ad
+
+ '#foo_bar_baz'   ->   'foo_baz'
+------------------------------------------------
+ key input: d3ad
+
+ '#foo_bar_baz'   ->   'foo_bar'
+------------------------------------------------
+
+Latest version : https://github.com/machakann/vim-textobj-delimited
