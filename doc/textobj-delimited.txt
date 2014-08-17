@@ -1,9 +1,9 @@
-*textobj-delimited.txt*                               Last change:11-Jul-2014.
+*textobj-delimited.txt*                               Last change:12-Aug-2014.
 
 The textobject plugin to do well with each delimited part of a string.
 
 
-Author  : machakann <mckn@outlook.com>
+Author  : machakann <mckn@outlook.jp>
 License : NYSL license
           Japanese <http://www.kmonos.net/nysl/>
           English (Unofficial) <http://www.kmonos.net/nysl/index.en.html>
@@ -54,24 +54,23 @@ characters in default. You can define your rule by
 
 
 ------------------------------------------------------------------------------
-At the beginning and the end of a words, |<Plug>(textobj-delimited-forward-a)|
-works tricky. Look the following examples.
+At the beginning of a word, |<Plug>(textobj-delimited-forward-a)| and
+|<Plug>(textobj-delimited-backward-a)| work tricky. Look the following
+examples.
 
-At the beginning of a word~
-If you use |d||<Plug>(textobj-delimited-forward-a)|, it deletes '_abc_'
-instead of '_abc'.
+If you use |d||<Plug>(textobj-delimited-forward-a)|, the cut strings are
+different for '_abc_def_ghi_' and 'abc_def_ghi'.
 >
-         #                     #        : cursor
-        _abc_def_ghi_    ->    def_ghi_
-<
+        #                      #        : cursor
+        _abc_def_ghi_    ->    _def_ghi_         (cut '_abc')
 
-At the end of a word~
-If you use |d||<Plug>(textobj-delimited-forward-a)|, it deletes '_ghi_'
-instead of '_ghi'.
->
-                 #                    # : cursor
-        _abc_def_ghi_    ->    _abc_def
+        #                      #        : cursor
+        abc_def_ghi      ->    def_ghi           (cut 'abc_')
 <
+Thus, A word has ended delimiters like '_abc_def_ghi_', ended delimiters would
+be preserved. A word has no ended delimiters like 'abc_def_ghi', ended
+delimiters do not appear. |<Plug>(textobj-delimited-forward-a)| keeps the
+exsistence/nonexistence of ended delimiters.
 
 
 
@@ -205,7 +204,7 @@ CONFIGURATION                                *textobj-delimited-configuration*
                                  *g:textobj_delimited_no_default_key_mappings*
 g:textobj_delimited_no_default_key_mappings
         If you define this valiable in your vimrc, default keymappings do not
-        prepared. If you want to use "id", "ad", "Id", "Ad" for other
+        prepared. If you want to use "id", "ad", "iD", "aD" for other
         mappings, this would be helpful.
 
 g:textobj_delimited_patterns                    *g:textobj_delimited_patterns*
